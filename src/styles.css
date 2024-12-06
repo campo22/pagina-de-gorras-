@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+body {
+  @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+}
+
+.nav-link {
+  @apply relative px-4 py-2 text-gray-700 hover:text-black transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.product-card {
+  @apply bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl;
+  animation: float 6s ease-in-out infinite;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.product-image-container {
+  @apply relative overflow-hidden;
+}
+
+.product-image {
+  @apply transition-transform duration-700 ease-out;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.size-button {
+  @apply px-4 py-2 border-2 rounded-full font-medium transition-all duration-300 transform hover:scale-110;
+}
+
+.size-button.active {
+  @apply bg-black text-white border-black shadow-lg;
+}
+
+.color-dot {
+  @apply w-8 h-8 rounded-full cursor-pointer transition-all duration-300 transform hover:scale-125;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(0,0,0,0.1);
+}
+
+.color-dot.active {
+  @apply ring-2 ring-offset-2 ring-black;
+}
+
+.add-to-cart-button {
+  @apply bg-black text-white px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl;
+  background: linear-gradient(90deg, #000, #333, #000);
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+.whatsapp-button {
+  @apply fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:bg-green-600 hover:scale-110 z-50;
+  animation: float 3s ease-in-out infinite;
+}
+
+.price-tag {
+  @apply text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-600;
+}
+
+.category-badge {
+  @apply absolute top-4 left-4 bg-black text-white px-4 py-1 rounded-full text-sm font-medium transform -rotate-12;
+}
+
+.header-container {
+  @apply bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 sticky top-0 z-40 shadow-sm;
+}
+
+.grid-container {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8;
+}
